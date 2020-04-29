@@ -14,65 +14,103 @@ function Header() {
   `);
 
   return (
-    <header className="bg-teal-700">
-      <div className="flex flex-wrap items-center justify-between max-w-4xl p-4 mx-auto md:p-8">
-        <Link to="/">
-          <h1 className="flex items-center text-white no-underline">
-            <svg
-              className="w-8 h-8 mr-2 fill-current"
-              height="54"
-              viewBox="0 0 54 54"
-              width="54"
-              xmlns="http://www.w3.org/2000/svg"
+    <>
+      <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+        <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start">
+          <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+            <div class="flex items-center justify-between w-full md:w-auto">
+              <a href="#">
+                <img
+                  class="h-8 w-auto sm:h-10"
+                  src="/img/logos/workflow-mark-on-white.svg"
+                  alt=""
+                />
+              </a>
+              <div class="-mr-2 flex items-center md:hidden">
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                >
+                  <svg
+                    class="h-6 w-6"
+                    stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block md:ml-10 md:pr-4">
+            <a
+              href="#"
+              class="font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out"
             >
-              <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-            </svg>
-            <span className="text-xl font-bold tracking-tight">
-              {site.siteMetadata.title}
-            </span>
-          </h1>
-        </Link>
-
-        <button
-          className="flex items-center block px-3 py-2 text-white border border-white rounded md:hidden"
-          onClick={() => toggleExpansion(!isExpanded)}
-        >
-          <svg
-            className="w-3 h-3 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>
-
-        <nav
-          className={`${
-            isExpanded ? `block` : `hidden`
-          } md:block md:flex md:items-center w-full md:w-auto`}
-        >
-          {[
-            {
-              route: `/about`,
-              title: `About`,
-            },
-            {
-              route: `/contact`,
-              title: `Contact`,
-            },
-          ].map((link) => (
-            <Link
-              className="block mt-4 text-white no-underline md:inline-block md:mt-0 md:ml-6"
-              key={link.title}
-              to={link.route}
-            >
-              {link.title}
-            </Link>
-          ))}
+              Home
+            </a>
+          </div>
         </nav>
       </div>
-    </header>
+
+      <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div class="rounded-lg shadow-md">
+          <div class="rounded-lg bg-white shadow-xs overflow-hidden">
+            <div class="px-5 pt-4 flex items-center justify-between">
+              <div>
+                <img
+                  class="h-8 w-auto"
+                  src="/img/logos/workflow-mark-on-white.svg"
+                  alt=""
+                />
+              </div>
+              <div class="-mr-2">
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                >
+                  <svg
+                    class="h-6 w-6"
+                    stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="px-2 pt-2 pb-3">
+              <a
+                href="#"
+                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out"
+              >
+                Home
+              </a>
+            </div>
+            <div>
+              <a
+                href="#"
+                class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out"
+              >
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
