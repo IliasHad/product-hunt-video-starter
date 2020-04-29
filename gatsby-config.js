@@ -1,21 +1,9 @@
 const resolveConfig = require("tailwindcss/resolveConfig");
 const tailwindConfig = require("./tailwind.config.js");
-const path = require("path")
+const path = require("path");
 const fullConfig = resolveConfig(tailwindConfig);
-var proxy = require("http-proxy-middleware")
 
 module.exports = {
-  developMiddleware: app => {
-    app.use(
-      "/.netlify/functions/",
-      proxy({
-        target: "http://localhost:9000",
-        pathRewrite: {
-          "/.netlify/functions/": "",
-        },
-      })
-    )
-  },
   siteMetadata: {
     title: `Gatsby Starter Tailwind`,
     description: `Gatsby starter styled with Tailwind`,

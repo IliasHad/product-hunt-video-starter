@@ -10,17 +10,21 @@ exports.onCreateNode = async ({
   const { createNode } = actions;
 
   if (node.internal.type === "googleSheetSheet1Row") {
-    const fileNode = await createRemoteFileNode({
-      url: node.featuredimage,
-      store,
-      cache,
-      createNode,
-      parentNodeId: node.id,
-      createNodeId,
-    });
+    try {
+      const fileNode = await createRemoteFileNode({
+        url: node.featuredimage,
+        store,
+        cache,
+        createNode,
+        parentNodeId: node.id,
+        createNodeId,
+      });
 
-    if (fileNode) {
-      node.localFeaturedImage___NODE = fileNode.id;
+      if (fileNode) {
+        node.localFeaturedImage___NODE = fileNode.id;
+      }
+    } catch (err) {
+      node.localFeaturedImage = null;
     }
   }
 };

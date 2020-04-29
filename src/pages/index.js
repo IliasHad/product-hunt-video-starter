@@ -14,12 +14,21 @@ const IndexPage = ({ data }) => {
     e.preventDefault();
     setVideomodalactive(false);
   };
+  const youtube_parser = (url) => {
+    var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+      return match[2];
+    } else {
+      //error
+      console.log(match);
+    }
+  };
 
   const handleDivClicked = (ev) => {
     // Retrieve the passed parameter from 'div_id' dataset
-    let id = ev.currentTarget.dataset.videourl
-      .split("https://www.youtube.com/watch?v=")[1]
-      .split("&feature=youtu.be")[0];
+    let id = youtube_parser(ev.currentTarget.dataset.videourl);
+
     console.log(`Div ${id} clicked`);
     setVideo(`https://www.youtube.com/embed/${id}`);
     setVideomodalactive(true);
@@ -48,7 +57,17 @@ const IndexPage = ({ data }) => {
       />
       <section className="container grid-cols-1 sm:grid-cols-2 md:grid-cols-3  mx-auto md:row-gap-24 row-gap-12 px-4 py-10 grid md:gap-10 ">
         {data.allGoogleSheetSheet1Row.nodes
+
           .filter((item) => item.localFeaturedImage !== null)
+          .filter((item) => item.localFeaturedImage.childImageSharp !== null)
+          .filter((item) =>
+            item.videourl.includes("https://www.youtube.com/embed/")
+          )
+          .filter(
+            (item, i, array) =>
+              array.findIndex((item, index) => item.productname !== index) !== i
+          )
+
           .sort((a, b) => b.votescount - a.votescount)
 
           .map((item, key) => (
@@ -70,7 +89,8 @@ const IndexPage = ({ data }) => {
                   {item.topic}
                 </div>
                 <a
-                  href="#"
+                  href={item.url}
+                  target="_blank"
                   className="block mt-2 text-lg leading-tight font-semibold text-gray-900 hover:underline"
                 >
                   {item.productname}

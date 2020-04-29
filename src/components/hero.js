@@ -18,6 +18,11 @@ export const Hero = () => {
               <p className="mt-3 text-center text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:my-8 md:text-xl ">
                 Curated product hunt launch videos to get inspiration for your
                 next PH launch and stay current on the latest video trends
+                <br />
+                <span className="text-indigo-600 mt-2 block">
+                  {" "}
+                  Note: click on the product image to watch the PH launch video
+                </span>
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
                 <div className="rounded-md shadow">
