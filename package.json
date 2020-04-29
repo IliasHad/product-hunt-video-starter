@@ -37,12 +37,9 @@
     "fix:prettier": "prettier --write \"**/*.{css,js,jsx,json,md}\"",
     "fix": "npm run fix:lint && npm run fix:prettier",
     "develop": "gatsby develop",
-    "start": "run-p start:**",
-    "start:app": "yarn run develop",
-    "start:lambda": "netlify-lambda serve src/functions",
-    "build": "gatsby build && netlify-lambda build src/functions",
-    "build:app": "gatsby build",
-    "build:lambda": "netlify-lambda build src/functions"
+  
+    "build": "gatsby build "
+
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "0.2.1",
